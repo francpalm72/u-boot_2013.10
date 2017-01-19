@@ -1,2 +1,2 @@
 #/bin/sh
-make mx6qitalwatt_config
+make mx6qmarta_config

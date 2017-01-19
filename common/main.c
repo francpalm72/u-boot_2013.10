@@ -382,14 +382,14 @@ static void process_boot_delay(void)
 	else
 #endif /* CONFIG_BOOTCOUNT_LIMIT */
 	{
-		if((gpio_get_value(IMX_GPIO_NR(7, 1)) != 0) && (gpio_get_value(IMX_GPIO_NR(3, 20)) != 0)){
-			printf ("Key0 and Key4 pressed\n");
-			s = getenv ("bootcmd_recovery");
-		}
-		else{
-			printf ("No btn pressed\n");
+		//if((gpio_get_value(IMX_GPIO_NR(7, 1)) != 0) && (gpio_get_value(IMX_GPIO_NR(3, 20)) != 0)){
+		//	printf ("Key0 and Key4 pressed\n");
+		//	s = getenv ("bootcmd_recovery");
+		//}
+		//else{
+		//	printf ("No btn pressed\n");
 			s = getenv ("bootcmd_normal");
-		}
+		//}
 
 	//	s = getenv ("bootcmd");
 	}

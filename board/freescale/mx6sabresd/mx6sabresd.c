@@ -54,18 +54,18 @@ iomux_v3_cfg_t const otg_pads[] = {
 };
 static void setup_iomux_otg(void)
 {
-	gpio_direction_output(IMX_GPIO_NR(3, 22), 0);	//MX6_PAD_EIM_D22__USBOH3_USBOTG_PWR
-	gpio_direction_output(IMX_GPIO_NR(4, 14), 1);	//MX6_PAD_KEY_COL4__USBOH3_USBOTG_OC
+	//gpio_direction_output(IMX_GPIO_NR(3, 22), 0);	//MX6_PAD_EIM_D22__USBOH3_USBOTG_PWR
+	//gpio_direction_output(IMX_GPIO_NR(4, 14), 1);	//MX6_PAD_KEY_COL4__USBOH3_USBOTG_OC
 
-	gpio_set_value(IMX_GPIO_NR(3, 22), 1);		//MX6_PAD_EIM_D22__USBOH3_USBOTG_PWR
+	//gpio_set_value(IMX_GPIO_NR(3, 22), 1);		//MX6_PAD_EIM_D22__USBOH3_USBOTG_PWR
 
-	imx_iomux_v3_setup_multiple_pads(otg_pads, ARRAY_SIZE(otg_pads));
+	//imx_iomux_v3_setup_multiple_pads(otg_pads, ARRAY_SIZE(otg_pads));
 }
 
 
-iomux_v3_cfg_t const uart1_pads[] = {
-	MX6_PAD_SD3_DAT7__UART1_TXD | MUX_PAD_CTRL(UART_PAD_CTRL),
-	MX6_PAD_SD3_DAT6__UART1_RXD | MUX_PAD_CTRL(UART_PAD_CTRL),
+iomux_v3_cfg_t const uart3_pads[] = {
+	MX6_PAD_EIM_D24__UART3_TXD | MUX_PAD_CTRL(UART_PAD_CTRL),
+	MX6_PAD_EIM_D25__UART3_RXD | MUX_PAD_CTRL(UART_PAD_CTRL),
 };
 
 iomux_v3_cfg_t const enet_pads1[] = {
@@ -150,7 +150,7 @@ iomux_v3_cfg_t const usdhc4_pads[] = {
 
 static void setup_iomux_uart(void)
 {
-	imx_iomux_v3_setup_multiple_pads(uart1_pads, ARRAY_SIZE(uart1_pads));
+	imx_iomux_v3_setup_multiple_pads(uart3_pads, ARRAY_SIZE(uart3_pads));
 }
 
 #ifdef CONFIG_FSL_ESDHC
@@ -173,7 +173,7 @@ int board_mmc_getcd(struct mmc *mmc)
 		ret = 0; /* USD2 is never present*/
 		break;
 	case USDHC3_BASE_ADDR:
-		ret = !gpio_get_value(USDHC3_CD_GPIO);
+		ret = 0;//!gpio_get_value(USDHC3_CD_GPIO);
 		break;
 	case USDHC4_BASE_ADDR:
 		ret = 1; /* eMMC/uSDHC4 is always present */
@@ -446,14 +446,14 @@ int board_video_skip(void)
 
 static void setup_lvds_pin(void)
 {
-	gpio_direction_output(IMX_GPIO_NR(2, 2), 0);	//MX6Q_PAD_NANDF_D2__GPIO_2_2,	/* F16_DPS_0 */
-	gpio_set_value(IMX_GPIO_NR(2, 3), 0);		//MX6Q_PAD_NANDF_D3__GPIO_2_3,	/* D17_FRC_0 */
+	//gpio_direction_output(IMX_GPIO_NR(2, 2), 0);	//MX6Q_PAD_NANDF_D2__GPIO_2_2,	/* F16_DPS_0 */
+	//gpio_set_value(IMX_GPIO_NR(2, 3), 0);		//MX6Q_PAD_NANDF_D3__GPIO_2_3,	/* D17_FRC_0 */
 
-	gpio_direction_output(IMX_GPIO_NR(2, 5), 0);	//MX6Q_PAD_NANDF_D5__GPIO_2_5,	/* B18_DPS_1 */
-	gpio_set_value(IMX_GPIO_NR(2, 6), 0);		//MX6Q_PAD_NANDF_D6__GPIO_2_6,	/* E17_FRC_1 */
+	//gpio_direction_output(IMX_GPIO_NR(2, 5), 0);	//MX6Q_PAD_NANDF_D5__GPIO_2_5,	/* B18_DPS_1 */
+	//gpio_set_value(IMX_GPIO_NR(2, 6), 0);		//MX6Q_PAD_NANDF_D6__GPIO_2_6,	/* E17_FRC_1 */
 
-	gpio_direction_output(IMX_GPIO_NR(6, 15), 0);	//Backlight Enable
-	gpio_set_value(IMX_GPIO_NR(6, 15), 0);		//Enable backlight
+	//gpio_direction_output(IMX_GPIO_NR(6, 15), 0);	//Backlight Enable
+	//gpio_set_value(IMX_GPIO_NR(6, 15), 0);		//Enable backlight
 	
 	return 0;
 }
@@ -585,46 +585,46 @@ int board_early_init_f(void)
 int board_init(void)
 {
 	/* LCD Backlight Enable OFF*/
-	gpio_direction_output(IMX_GPIO_NR(5, 5), 0);
-    gpio_set_value(IMX_GPIO_NR(5, 5), 0); 
+	//gpio_direction_output(IMX_GPIO_NR(5, 5), 0);
+    //gpio_set_value(IMX_GPIO_NR(5, 5), 0); 
 
 	/* Buzzer */
-	gpio_direction_output(IMX_GPIO_NR(5, 9), 0);
-        gpio_set_value(IMX_GPIO_NR(5, 9), 0); 
+	//gpio_direction_output(IMX_GPIO_NR(5, 9), 0);
+        //gpio_set_value(IMX_GPIO_NR(5, 9), 0); 
 
 	/* address of boot parameters */
 	gd->bd->bi_boot_params = PHYS_SDRAM + 0x100;
 	
 	/* 5v enable AUX_5V_EN */
-	gpio_direction_output(IMX_GPIO_NR(6, 10), 1);
-	gpio_set_value(IMX_GPIO_NR(6, 10), 1);   
+	//gpio_direction_output(IMX_GPIO_NR(6, 10), 1);
+	//gpio_set_value(IMX_GPIO_NR(6, 10), 1);   
 	
 	/* 5v enable IO_PWR_EN */
-	gpio_direction_output(IMX_GPIO_NR(1, 30), 1);
-	gpio_set_value(IMX_GPIO_NR(1, 30), 1);   
+	//gpio_direction_output(IMX_GPIO_NR(1, 30), 1);
+	//gpio_set_value(IMX_GPIO_NR(1, 30), 1);   
 
 	/* usb otg power enable */
-	gpio_direction_output(IMX_GPIO_NR(3, 22), 1);
-    gpio_set_value(IMX_GPIO_NR(3, 22), 1);   
+	//gpio_direction_output(IMX_GPIO_NR(3, 22), 1);
+    //gpio_set_value(IMX_GPIO_NR(3, 22), 1);   
 
 	/* keyb0 supply output */
-	gpio_direction_output(IMX_GPIO_NR(4, 18), 1);
-    gpio_set_value(IMX_GPIO_NR(4, 18), 1);
+	//gpio_direction_output(IMX_GPIO_NR(4, 18), 1);
+    //gpio_set_value(IMX_GPIO_NR(4, 18), 1);
 
 	/* keyb1 supply output */
-	gpio_direction_output(IMX_GPIO_NR(4, 19), 0);
-    gpio_set_value(IMX_GPIO_NR(4, 19), 0); 
+	//gpio_direction_output(IMX_GPIO_NR(4, 19), 0);
+    //gpio_set_value(IMX_GPIO_NR(4, 19), 0); 
 
 	/* Key0 */
-	gpio_direction_input(IMX_GPIO_NR(7, 1));
+	//gpio_direction_input(IMX_GPIO_NR(7, 1));
 	/* Key1 */
-	gpio_direction_input(IMX_GPIO_NR(7, 0));
+	//gpio_direction_input(IMX_GPIO_NR(7, 0));
 	/* Key2 */
-	gpio_direction_input(IMX_GPIO_NR(1, 10));
+	//gpio_direction_input(IMX_GPIO_NR(1, 10));
 	/* Key3 */
-	gpio_direction_input(IMX_GPIO_NR(1, 6));
+	//gpio_direction_input(IMX_GPIO_NR(1, 6));
 	/* Key4 */
-	gpio_direction_input(IMX_GPIO_NR(3, 20));
+	//gpio_direction_input(IMX_GPIO_NR(3, 20));
 
 
 	return 0;
@@ -634,9 +634,9 @@ int board_init(void)
 static const struct boot_mode board_boot_modes[] = {
 	/* 4 bit bus width */
 	{"sd2",	 MAKE_CFGVAL(0x40, 0x28, 0x00, 0x00)},
-	{"sd3",	 MAKE_CFGVAL(0x40, 0x30, 0x00, 0x00)},
+	{"mmc3",	 MAKE_CFGVAL(0x40, 0x30, 0x00, 0x00)},
 	/* 8 bit bus width */
-	{"emmc", MAKE_CFGVAL(0x40, 0x38, 0x00, 0x00)},
+	{"mmc4", MAKE_CFGVAL(0x40, 0x38, 0x00, 0x00)},
 	{NULL,	 0},
 };
 #endif
@@ -652,6 +652,6 @@ int board_late_init(void)
 
 int checkboard(void)
 {
-	puts("Board: MX6-Italwatt\n");
+	puts("Board: MX6-Marta\n");
 	return 0;
 }
