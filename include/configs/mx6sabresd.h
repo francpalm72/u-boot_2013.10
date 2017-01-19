@@ -67,13 +67,13 @@
   "lvds0=${video0}:dev=ldb,LDB-XGA,if=RGB666\0"\
   "lvds1=${video1}:dev=ldb,LDB-XGA,if=RGB666\0"\
   "mmc_recovery_partition=1\0"\
-  "mmc_normal_partition=3\0"\
+  "mmc_normal_partition=1\0"\
   "uimage=/boot/uImage\0"\
   "fdt=/boot/" CONFIG_DEFAULT_FDT_FILE "\0"\
   "console=" CONFIG_CONSOLE_DEV "\0"\
   "mmcdev=2\0"\
   "bootargs_recovery=console=ttymxc0,115200 root=/dev/mmcblk0p1 ro rootwait lpj=7905280 quiet\0"\
-  "bootargs_normal=console=ttymxc0,115200 root=/dev/mmcblk0p3 ro rootwait lpj=7905280 quiet\0"\
+  "bootargs_normal=console=ttymxc0,115200 root=/dev/mmcblk0p1 ro rootwait lpj=7905280 quiet\0"\
   "bootcmd_reset=mw.b 0x20000000 0 0x10000; mmc write 0x20000000 0x0 0x10000; reset\0"\
   "bootcmd_normal=setenv bootargs ${bootargs_normal}; ext2load mmc ${mmcdev}:${mmc_normal_partition} ${loadaddr} ${uimage}; ext2load mmc ${mmcdev}:${mmc_normal_partition} ${fdt_addr} ${fdt}; clrlogo; bootm ${loadaddr} - ${fdt_addr}\0"\
   "bootcmd_recovery= setenv bootargs ${bootargs_recovery}; ext2load mmc ${mmcdev}:${mmc_recovery_partition} ${loadaddr} ${uimage}; ext2load mmc ${mmcdev}:${mmc_recovery_partition} ${fdt_addr} ${fdt}; clrlogo; bootm ${loadaddr} - ${fdt_addr}\0"\
