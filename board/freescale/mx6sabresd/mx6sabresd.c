@@ -638,7 +638,7 @@ int board_init(void)
 static const struct boot_mode board_boot_modes[] = {
 	/* 4 bit bus width */
 	{"sd2",	 MAKE_CFGVAL(0x40, 0x28, 0x00, 0x00)},
-	{"mmc3"  MAKE_CFGVAL(0x40, 0x30, 0x00, 0x00)},
+	{"mmc3",  MAKE_CFGVAL(0x40, 0x30, 0x00, 0x00)},
 	/* 8 bit bus width */
 	{"mmc4", MAKE_CFGVAL(0x40, 0x38, 0x00, 0x00)},
 	{NULL,	 0},
