@@ -24,7 +24,7 @@
 #include <ipu_pixfmt.h>
 #include <asm/io.h>
 #include <asm/arch/sys_proto.h>
-#include <micrel.h>
+//#include <micrel.h>
 DECLARE_GLOBAL_DATA_PTR;
 
 #define UART_PAD_CTRL  (PAD_CTL_PUS_100K_UP |			\
@@ -48,10 +48,10 @@ int dram_init(void)
 	return 0;
 }
 
-iomux_v3_cfg_t const otg_pads[] = {
-	MX6_PAD_KEY_COL4__USBOH3_USBOTG_OC | MUX_PAD_CTRL(OTG_PAD_CTRL),
-	MX6_PAD_EIM_D22__USBOH3_USBOTG_PWR | MUX_PAD_CTRL(OTG_PAD_CTRL),
-};
+//iomux_v3_cfg_t const otg_pads[] = {
+//	MX6_PAD_KEY_COL4__USBOH3_USBOTG_OC | MUX_PAD_CTRL(OTG_PAD_CTRL),
+//	MX6_PAD_EIM_D22__USBOH3_USBOTG_PWR | MUX_PAD_CTRL(OTG_PAD_CTRL),
+//};
 static void setup_iomux_otg(void)
 {
 	//gpio_direction_output(IMX_GPIO_NR(3, 22), 0);	//MX6_PAD_EIM_D22__USBOH3_USBOTG_PWR
@@ -69,15 +69,23 @@ iomux_v3_cfg_t const uart3_pads[] = {
 };
 
 iomux_v3_cfg_t const enet_pads1[] = {
-	MX6_PAD_ENET_MDIO__ENET_MDIO		| MUX_PAD_CTRL(ENET_PAD_CTRL),
-	MX6_PAD_ENET_MDC__ENET_MDC		| MUX_PAD_CTRL(ENET_PAD_CTRL),
+	MX6_PAD_ENET_MDIO__ENET_MDIO		| MUX_PAD_CTRL(ENET_PAD_CTRL),	//GPIO_1_22
+	MX6_PAD_ENET_MDC__ENET_MDC		| MUX_PAD_CTRL(ENET_PAD_CTRL),	//GPIO_1_31
+	MX6_PAD_ENET_CRS_DV__GPIO_1_25		| MUX_PAD_CTRL(NO_PAD_CTRL),	//GPIO_1_25
+	MX6_PAD_ENET_REF_CLK__GPIO_1_23		| MUX_PAD_CTRL(NO_PAD_CTRL),	//GPIO_1_23 <<<<<<<<
+	MX6_PAD_ENET_RX_ER__GPIO_1_24		| MUX_PAD_CTRL(NO_PAD_CTRL),	//GPIO_1_24
+	MX6_PAD_ENET_TX_EN__GPIO_1_28		| MUX_PAD_CTRL(NO_PAD_CTRL),	//GPIO_1_28
+	MX6_PAD_ENET_RXD0__GPIO_1_27		| MUX_PAD_CTRL(NO_PAD_CTRL),	//GPIO_1_27
+	MX6_PAD_ENET_RXD1__GPIO_1_26		| MUX_PAD_CTRL(NO_PAD_CTRL),	//GPIO_1_26
+	MX6_PAD_ENET_TXD0__GPIO_1_30		| MUX_PAD_CTRL(NO_PAD_CTRL),	//GPIO_1_30
+	MX6_PAD_ENET_TXD1__GPIO_1_29		| MUX_PAD_CTRL(NO_PAD_CTRL),	//GPIO_1_29
+
 	MX6_PAD_RGMII_TXC__ENET_RGMII_TXC	| MUX_PAD_CTRL(ENET_PAD_CTRL),
 	MX6_PAD_RGMII_TD0__ENET_RGMII_TD0	| MUX_PAD_CTRL(ENET_PAD_CTRL),
 	MX6_PAD_RGMII_TD1__ENET_RGMII_TD1	| MUX_PAD_CTRL(ENET_PAD_CTRL),
 	MX6_PAD_RGMII_TD2__ENET_RGMII_TD2	| MUX_PAD_CTRL(ENET_PAD_CTRL),
 	MX6_PAD_RGMII_TD3__ENET_RGMII_TD3	| MUX_PAD_CTRL(ENET_PAD_CTRL),
 	MX6_PAD_RGMII_TX_CTL__RGMII_TX_CTL	| MUX_PAD_CTRL(ENET_PAD_CTRL),
-	MX6_PAD_ENET_REF_CLK__ENET_TX_CLK	| MUX_PAD_CTRL(ENET_PAD_CTRL),
 	
 	MX6_PAD_RGMII_RXC__GPIO_6_30		| MUX_PAD_CTRL(NO_PAD_CTRL),
 	MX6_PAD_RGMII_RD0__GPIO_6_25		| MUX_PAD_CTRL(NO_PAD_CTRL),
@@ -85,8 +93,6 @@ iomux_v3_cfg_t const enet_pads1[] = {
 	MX6_PAD_RGMII_RD2__GPIO_6_28		| MUX_PAD_CTRL(NO_PAD_CTRL),
 	MX6_PAD_RGMII_RD3__GPIO_6_29		| MUX_PAD_CTRL(NO_PAD_CTRL),
 	MX6_PAD_RGMII_RX_CTL__GPIO_6_24		| MUX_PAD_CTRL(NO_PAD_CTRL),
-	
-	MX6_PAD_ENET_CRS_DV__GPIO_1_25		| MUX_PAD_CTRL(NO_PAD_CTRL),
 };
 
 iomux_v3_cfg_t const enet_pads2[] = {
@@ -136,7 +142,7 @@ iomux_v3_cfg_t const usdhc3_pads[] = {
 	MX6_PAD_SD3_DAT5__USDHC3_DAT5 | MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_SD3_DAT6__USDHC3_DAT6 | MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_SD3_DAT7__USDHC3_DAT7 | MUX_PAD_CTRL(USDHC_PAD_CTRL),
-//MX6_PAD_NANDF_D0__GPIO_2_0    | MUX_PAD_CTRL(NO_PAD_CTRL), /* CD */
+	//MX6_PAD_NANDF_D0__GPIO_2_0    | MUX_PAD_CTRL(NO_PAD_CTRL), /* CD */
 };
 
 iomux_v3_cfg_t const usdhc4_pads[] = {
@@ -232,67 +238,67 @@ int board_mmc_init(bd_t *bis)
 }
 #endif
 
-int mx6_rgmii_rework(struct phy_device *phydev)
-{
-	unsigned short val;
-
-	/* To enable AR8031 ouput a 125MHz clk from CLK_25M */
-	phy_write(phydev, MDIO_DEVAD_NONE, 0xd, 0x7);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0xe, 0x8016);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0xd, 0x4007);
-
-	val = phy_read(phydev, MDIO_DEVAD_NONE, 0xe);
-	val &= 0xffe3;
-	val |= 0x18;
-	phy_write(phydev, MDIO_DEVAD_NONE, 0xe, val);
-
-	/* introduce tx clock delay */
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x1d, 0x5);
-	val = phy_read(phydev, MDIO_DEVAD_NONE, 0x1e);
-	val |= 0x0100;
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x1e, val);
-
-	return 0;
-}
-
-int board_phy_config(struct phy_device *phydev)
-{
-	//mx6_rgmii_rework(phydev);
-
-	/* min rx data delay */
-	//ksz9031_phy_extended_write(phydev, 0x0, MII_KSZ9021_EXT_RGMII_RX_DATA_SKEW, 0x0, 0x0);
-	/* min tx data delay */
-	//ksz9031_phy_extended_write(phydev, 0x0, MII_KSZ9021_EXT_RGMII_TX_DATA_SKEW, 0x0, 0x0);
-	/* max rx/tx clock delay, min rx/tx control */
-	//ksz9031_phy_extended_write(phydev, 0x0, MII_KSZ9021_EXT_RGMII_CLOCK_SKEW, 0x0, 0xf0f0);
-	
-	/* adjust KSZ9031 ethernet phy */
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0x2);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x4);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0xc002);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x0000);
-
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0x2);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x5);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0xc002);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x0000);
-
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0x2);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x6);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0xc002);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x0000); //0xffff);
-
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0x2);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x8);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0xc002);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x3fff);
-	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0x0);
-
-	if (phydev->drv->config)
-		phydev->drv->config(phydev);
-	
-	return 0;
-}
+//int mx6_rgmii_rework(struct phy_device *phydev)
+//{
+//	unsigned short val;
+//
+//	/* To enable AR8031 ouput a 125MHz clk from CLK_25M */
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0xd, 0x7);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0xe, 0x8016);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0xd, 0x4007);
+//
+//	val = phy_read(phydev, MDIO_DEVAD_NONE, 0xe);
+//	val &= 0xffe3;
+//	val |= 0x18;
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0xe, val);
+//
+//	/* introduce tx clock delay */
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x1d, 0x5);
+//	val = phy_read(phydev, MDIO_DEVAD_NONE, 0x1e);
+//	val |= 0x0100;
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x1e, val);
+//
+//	return 0;
+//}
+//
+//int board_phy_config(struct phy_device *phydev)
+//{
+//	//mx6_rgmii_rework(phydev);
+//
+//	/* min rx data delay */
+//	//ksz9031_phy_extended_write(phydev, 0x0, MII_KSZ9021_EXT_RGMII_RX_DATA_SKEW, 0x0, 0x0);
+//	/* min tx data delay */
+//	//ksz9031_phy_extended_write(phydev, 0x0, MII_KSZ9021_EXT_RGMII_TX_DATA_SKEW, 0x0, 0x0);
+//	/* max rx/tx clock delay, min rx/tx control */
+//	//ksz9031_phy_extended_write(phydev, 0x0, MII_KSZ9021_EXT_RGMII_CLOCK_SKEW, 0x0, 0xf0f0);
+//	
+//	/* adjust KSZ9031 ethernet phy */
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0x2);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x4);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0xc002);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x0000);
+//
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0x2);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x5);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0xc002);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x0000);
+//
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0x2);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x6);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0xc002);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x0000); //0xffff);
+//
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0x2);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x8);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0xc002);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0e, 0x3fff);
+//	phy_write(phydev, MDIO_DEVAD_NONE, 0x0d, 0x0);
+//
+//	if (phydev->drv->config)
+//		phydev->drv->config(phydev);
+//	
+//	return 0;
+//}
 
 
 #if defined(CONFIG_VIDEO_IPUV3)
@@ -579,8 +585,8 @@ int board_early_init_f(void)
 #if defined(CONFIG_VIDEO_IPUV3)
 	printf("setup_display\n");
 	setup_display();
-#endif
 	setup_lvds_pin();
+#endif
 	setup_iomux_otg();
 
 	return 0;
@@ -656,6 +662,6 @@ int board_late_init(void)
 
 int checkboard(void)
 {
-	puts("Board: MX6-Marta\n");
+	puts("Board: MX6-Marta SDHC3\n");
 	return 0;
 }
