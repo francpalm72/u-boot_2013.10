@@ -459,7 +459,7 @@ static void setup_lvds_pin(void)
 	//gpio_direction_output(IMX_GPIO_NR(6, 15), 0);	//Backlight Enable
 	//gpio_set_value(IMX_GPIO_NR(6, 15), 0);		//Enable backlight
 	
-	return 0;
+	return;
 }
 
 static void setup_display(void)

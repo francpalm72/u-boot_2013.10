@@ -32,8 +32,7 @@
 
 #define CONFIG_SYS_FSL_USDHC_NUM	3
 #if defined(CONFIG_ENV_IS_IN_MMC)
-#define CONFIG_SYS_MMC_ENV_DEV		2	/* SDHC4 - MMC */
-//#define CONFIG_SYS_MMC_ENV_DEV	1	/* SDHC3 - SD */
+#define CONFIG_SYS_MMC_ENV_DEV		1	/* 1=SDHC3 ; 2=SDHC4 */
 #endif
 
 /* Framebuffer */
