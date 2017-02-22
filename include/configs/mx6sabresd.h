@@ -15,8 +15,8 @@
 
 #define CONFIG_MACH_TYPE	3980
 #define CONFIG_MXC_UART_BASE	UART3_BASE
-#define CONFIG_CONSOLE_DEV	"ttymxc0"
-#define CONFIG_MMCROOT		"/dev/mmcblk1p1"
+#define CONFIG_CONSOLE_DEV	"ttymxc2"
+#define CONFIG_MMCROOT		"/dev/mmcblk0p1"
 #if defined(CONFIG_MX6Q)
 #define CONFIG_DEFAULT_FDT_FILE	"imx6q-marta.dtb"
 #elif defined(CONFIG_MX6DL)
@@ -32,7 +32,7 @@
 
 #define CONFIG_SYS_FSL_USDHC_NUM	3
 #if defined(CONFIG_ENV_IS_IN_MMC)
-#define CONFIG_SYS_MMC_ENV_DEV		2	/* 1=SDHC3 ; 2=SDHC4 */
+#define CONFIG_SYS_MMC_ENV_DEV		1	/* 1=SDHC3 ; 2=SDHC4 */
 #endif
 
 /* Framebuffer */
@@ -70,9 +70,9 @@
   "uimage=/boot/uImage\0"\
   "fdt=/boot/" CONFIG_DEFAULT_FDT_FILE "\0"\
   "console=" CONFIG_CONSOLE_DEV "\0"\
-  "mmcdev=2\0"\
-  "bootargs_recovery=console=ttymxc0,115200 root=/dev/mmcblk1p1 ro rootwait lpj=7905280 quiet\0"\
-  "bootargs_normal=console=ttymxc0,115200 root=/dev/mmcblk1p1 ro rootwait lpj=7905280 quiet\0"\
+  "mmcdev=1\0"\
+  "bootargs_recovery=console=ttymxc2,115200 root=/dev/mmcblk0p1 ro rootwait lpj=7905280 quiet\0"\
+  "bootargs_normal=console=ttymxc2,115200 root=/dev/mmcblk0p1 ro rootwait lpj=7905280 quiet\0"\
   "bootcmd_reset=mw.b 0x20000000 0 0x10000; mmc write 0x20000000 0x0 0x10000; reset\0"\
   "bootcmd_normal=setenv bootargs ${bootargs_normal}; ext2load mmc ${mmcdev}:${mmc_normal_partition} ${loadaddr} ${uimage}; ext2load mmc ${mmcdev}:${mmc_normal_partition} ${fdt_addr} ${fdt}; clrlogo; bootm ${loadaddr} - ${fdt_addr}\0"\
   "bootcmd_recovery= setenv bootargs ${bootargs_recovery}; ext2load mmc ${mmcdev}:${mmc_recovery_partition} ${loadaddr} ${uimage}; ext2load mmc ${mmcdev}:${mmc_recovery_partition} ${fdt_addr} ${fdt}; clrlogo; bootm ${loadaddr} - ${fdt_addr}\0"\
