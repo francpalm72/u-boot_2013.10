@@ -166,13 +166,13 @@ static void setup_iomux_uart(void)
 
 #ifdef CONFIG_FSL_ESDHC
 struct fsl_esdhc_cfg usdhc_cfg[3] = {
-	{USDHC2_BASE_ADDR},
+	//{USDHC2_BASE_ADDR},
 	{USDHC3_BASE_ADDR},
 	{USDHC4_BASE_ADDR},
 };
 
-#define USDHC2_CD_GPIO	IMX_GPIO_NR(2, 2)
-#define USDHC3_CD_GPIO	IMX_GPIO_NR(2, 0)
+/*#define USDHC2_CD_GPIO	IMX_GPIO_NR(2, 2)*/
+/*#define USDHC3_CD_GPIO	IMX_GPIO_NR(2, 0)*/
 
 int board_mmc_getcd(struct mmc *mmc)
 {
@@ -180,9 +180,9 @@ int board_mmc_getcd(struct mmc *mmc)
 	int ret = 0;
 
 	switch (cfg->esdhc_base) {
-	case USDHC2_BASE_ADDR:
-		ret = 0; /* USD2 is never present*/
-		break;
+	//case USDHC2_BASE_ADDR:
+	//	ret = 0; /* USD2 is never present*/
+	//	break;
 	case USDHC3_BASE_ADDR:
 		ret = 1;//!gpio_get_value(USDHC3_CD_GPIO);
 		break;
@@ -208,22 +208,22 @@ int board_mmc_init(bd_t *bis)
 	 */
 	for (i = 0; i < CONFIG_SYS_FSL_USDHC_NUM; i++) {
 		switch (i) {
-		case 0:
+		//case 0:
 			//imx_iomux_v3_setup_multiple_pads(
 			//	usdhc2_pads, ARRAY_SIZE(usdhc2_pads));
 			//gpio_direction_input(USDHC2_CD_GPIO);
 			//usdhc_cfg[0].sdhc_clk = mxc_get_clock(MXC_ESDHC2_CLK);
-			break;
-		case 1:
+			//break;
+		case 0:
 			imx_iomux_v3_setup_multiple_pads(
 				usdhc3_pads, ARRAY_SIZE(usdhc3_pads));
 			//gpio_direction_input(USDHC3_CD_GPIO);
-			usdhc_cfg[1].sdhc_clk = mxc_get_clock(MXC_ESDHC3_CLK);
+			usdhc_cfg[0].sdhc_clk = mxc_get_clock(MXC_ESDHC3_CLK);
 			break;
-		case 2:
+		case 1:
 			imx_iomux_v3_setup_multiple_pads(
 				usdhc4_pads, ARRAY_SIZE(usdhc4_pads));
-			usdhc_cfg[2].sdhc_clk = mxc_get_clock(MXC_ESDHC4_CLK);
+			usdhc_cfg[1].sdhc_clk = mxc_get_clock(MXC_ESDHC4_CLK);
 			break;
 		default:
 			printf("Warning: you configured more USDHC controllers"
@@ -644,7 +644,7 @@ int board_init(void)
 #ifdef CONFIG_CMD_BMODE
 static const struct boot_mode board_boot_modes[] = {
 	/* 4 bit bus width */
-	{"sd2",	 MAKE_CFGVAL(0x40, 0x28, 0x00, 0x00)},
+	//{"sd2", MAKE_CFGVAL(0x40, 0x28, 0x00, 0x00)},
 	/* 8 bit bus width */
 	{"mmc0", MAKE_CFGVAL(0x60, 0x50, 0x00, 0x00)},
 	{"mmc1", MAKE_CFGVAL(0x60, 0x58, 0x00, 0x00)},

@@ -34,7 +34,7 @@
 
 #define CONFIG_SYS_FSL_USDHC_NUM	2
 #if defined(CONFIG_ENV_IS_IN_MMC)
-#define CONFIG_SYS_MMC_ENV_DEV		2	/* 1=SDHC3 ; 2=SDHC4 */
+#define CONFIG_SYS_MMC_ENV_DEV		1	/* 0=SDHC3 ; 1=SDHC4 */
 #endif
 
 /* Framebuffer */
@@ -72,7 +72,7 @@
   "uimage=/boot/uImage\0"\
   "fdt=/boot/" CONFIG_DEFAULT_FDT_FILE "\0"\
   "console=" CONFIG_CONSOLE_DEV "\0"\
-  "mmcdev=2\0"\
+  "mmcdev=1\0"\
   "bootargs_recovery=console=ttymxc2,115200 root=/dev/mmcblk1p1 ro rootwait lpj=7905280 quiet\0"\
   "bootargs_normal=console=ttymxc2,115200 root=/dev/mmcblk1p1 ro rootwait lpj=7905280 quiet\0"\
   "bootcmd_reset=mw.b 0x20000000 0 0x10000; mmc write 0x20000000 0x0 0x10000; reset\0"\
