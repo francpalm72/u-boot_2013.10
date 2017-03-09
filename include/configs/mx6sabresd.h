@@ -76,8 +76,8 @@
   "bootargs_recovery=console=ttymxc2,115200 root=/dev/mmcblk1p1 ro rootwait lpj=7905280 quiet\0"\
   "bootargs_normal=console=ttymxc2,115200 root=/dev/mmcblk1p1 ro rootwait lpj=7905280 quiet\0"\
   "bootcmd_reset=mw.b 0x20000000 0 0x10000; mmc write 0x20000000 0x0 0x10000; reset\0"\
-  "bootcmd_normal=setenv bootargs ${bootargs_normal}; ext2load mmc ${mmcdev}:${mmc_normal_partition} ${loadaddr} ${uimage}; ext2load mmc ${mmcdev}:${mmc_normal_partition} ${fdt_addr} ${fdt}; clrlogo; bootm ${loadaddr} - ${fdt_addr}\0"\
-  "bootcmd_recovery= setenv bootargs ${bootargs_recovery}; ext2load mmc ${mmcdev}:${mmc_recovery_partition} ${loadaddr} ${uimage}; ext2load mmc ${mmcdev}:${mmc_recovery_partition} ${fdt_addr} ${fdt}; clrlogo; bootm ${loadaddr} - ${fdt_addr}\0"\
+  "bootcmd_normal=setenv bootargs ${bootargs_normal}; ext2load mmc ${mmcdev}:${mmc_normal_partition} ${loadaddr} ${uimage}; ext2load mmc ${mmcdev}:${mmc_normal_partition} ${fdt_addr} ${fdt}; bootm ${loadaddr} - ${fdt_addr}\0"\
+  "bootcmd_recovery= setenv bootargs ${bootargs_recovery}; ext2load mmc ${mmcdev}:${mmc_recovery_partition} ${loadaddr} ${uimage}; ext2load mmc ${mmcdev}:${mmc_recovery_partition} ${fdt_addr} ${fdt}; bootm ${loadaddr} - ${fdt_addr}\0"\
   "bootcmd=run bootcmd_normal\0"
 
 /* Ethernet */

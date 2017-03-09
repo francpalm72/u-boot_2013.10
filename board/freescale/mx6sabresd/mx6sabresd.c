@@ -609,7 +609,93 @@ int board_init(void)
 	//gpio_direction_input(IMX_GPIO_NR(1, 6));
 	/* Key4 */
 	//gpio_direction_input(IMX_GPIO_NR(3, 20));
+//GPIO OUTPUT
+	gpio_direction_output(IMX_GPIO_NR(2, 27), 0); //SPARE_1_OUT_CPU - 59
+	gpio_direction_output(IMX_GPIO_NR(2, 26), 0); //SPARE_2_OUT_CPU - 58
+	gpio_direction_output(IMX_GPIO_NR(6, 6), 0); //SPARE_3_OUT_CPU - 166
+	gpio_direction_output(IMX_GPIO_NR(2, 22), 0); //EASAU_CPU - 54
+	gpio_direction_output(IMX_GPIO_NR(2, 21), 0); //EEO_CPU - 53
+	gpio_direction_output(IMX_GPIO_NR(2, 20), 0); //ESS_CPU - 52
+	gpio_direction_output(IMX_GPIO_NR(2, 19), 0); //EPA_CPU - 51
+	gpio_direction_output(IMX_GPIO_NR(2, 18), 0); //EDB_CPU - 50
+	gpio_direction_output(IMX_GPIO_NR(2, 17), 0); //EFB_CPU - 49
+	gpio_direction_output(IMX_GPIO_NR(2, 16), 0); //EAB_CPU - 48
+	gpio_direction_output(IMX_GPIO_NR(5, 4), 0); //INH_SORVOLO_CPU - 132
+	gpio_direction_output(IMX_GPIO_NR(2, 30), 0); //EBT_CPU - 62
+	gpio_direction_output(IMX_GPIO_NR(2, 31), 0); //INH_G_SWITCH_CPU - 63
+	gpio_direction_output(IMX_GPIO_NR(5, 0), 0); //BIT_L_CPU - 128
+	gpio_direction_output(IMX_GPIO_NR(2, 28), 0); //EBT_SK_CPU - 60
+				
+	gpio_direction_output(IMX_GPIO_NR(4, 16), 0); //SKR_PWR_CTR_CPU - 112
+	gpio_direction_output(IMX_GPIO_NR(4, 29), 0); //CMD_CONSENSOFUOCO_CPU - 125
+	gpio_direction_output(IMX_GPIO_NR(4, 30), 0); //CMD_FMP_INT_CPU - 126
+	gpio_direction_output(IMX_GPIO_NR(5, 5), 0); //SENS_D00_CPU - 133
+	gpio_direction_output(IMX_GPIO_NR(5, 6), 0); //SENS_D01_CPU - 134
+	gpio_direction_output(IMX_GPIO_NR(5, 10), 0); //ID_00_CPU - 138
+	gpio_direction_output(IMX_GPIO_NR(5, 11), 0); //ID_01_CPU - 139
+				
+	gpio_direction_output(IMX_GPIO_NR(4, 11), 0); //TFUEL_RANGE_SLC - 107
+	gpio_direction_output(IMX_GPIO_NR(1, 0), 0); //MAINT_SK_CPU - 0
+	gpio_direction_output(IMX_GPIO_NR(1, 9), 0); //SEL_ANT_CPU - 9
+	gpio_direction_output(IMX_GPIO_NR(7, 11), 0); //RESET_L_CPU - 203
+	gpio_direction_output(IMX_GPIO_NR(7, 12), 0); //CMD_SPIRA_CPU - 204
+				
+	gpio_direction_output(IMX_GPIO_NR(6, 9), 0); //IMX6_SPARE_LED - 169
+	gpio_direction_output(IMX_GPIO_NR(2, 4), 0); //SAFE_SPOLETTA_CPU - 36
+	gpio_direction_output(IMX_GPIO_NR(2, 5), 0); //ENABLE_DL_CPU - 37
+	gpio_direction_output(IMX_GPIO_NR(2, 6), 0); //ESA_CPU - 38
+	gpio_direction_output(IMX_GPIO_NR(2, 7), 0); //ESF_CPU - 39
+				
+	gpio_direction_output(IMX_GPIO_NR(1, 14), 0); //OK_CPU - 14
+	gpio_direction_output(IMX_GPIO_NR(1, 13), 0); //GO_SW_CPU - 13
 
+
+
+//GPIO INPUT
+	gpio_direction_input(IMX_GPIO_NR(2, 23)); //SPARE_1_IN_CPU - 55
+	gpio_direction_input(IMX_GPIO_NR(2, 25)); //SPARE_2_IN_CPU - 57
+	gpio_direction_input(IMX_GPIO_NR(2, 24)); //SPARE_3_IN_CPU - 56
+	gpio_direction_input(IMX_GPIO_NR(5, 2)); //OK_TH_CPU - 130
+	gpio_direction_input(IMX_GPIO_NR(3, 29)); //CK_PLUG_0_CPU - 93
+	gpio_direction_input(IMX_GPIO_NR(3, 30)); //CK_PLUG_1_CPU - 94
+	gpio_direction_input(IMX_GPIO_NR(6, 31)); //LOOPBACK_SIGNAL_CPU - 191
+				
+	gpio_direction_input(IMX_GPIO_NR(4, 18)); //OK_SPOLETTA_CPU - 114
+	gpio_direction_input(IMX_GPIO_NR(4, 19)); //OK_DL_CPU - 115
+	gpio_direction_input(IMX_GPIO_NR(4, 20)); //OK_PS_TH_CPU - 116
+	gpio_direction_input(IMX_GPIO_NR(4, 17)); //OK_GPS_CPU - 113
+	gpio_direction_input(IMX_GPIO_NR(4, 28)); //STATUS_ANT_CPU - 124
+	gpio_direction_input(IMX_GPIO_NR(4, 31)); //OK_PS_SWRF_CPU - 127
+	gpio_direction_input(IMX_GPIO_NR(5, 7)); //FUS_BT1_CPU - 135
+	gpio_direction_input(IMX_GPIO_NR(5, 8)); //FUS_BT2_CPU - 136
+	gpio_direction_input(IMX_GPIO_NR(5, 9)); //FAILSAFE_ENABLE_CPU - 137
+	gpio_direction_input(IMX_GPIO_NR(5, 12)); //MAINT_SEL_CPU - 140
+	gpio_direction_input(IMX_GPIO_NR(5, 13)); //OK_BT_SK_PSB_CPU - 141
+	gpio_direction_input(IMX_GPIO_NR(5, 14)); //OK_PS_WCU_CPU - 142
+				
+	gpio_direction_input(IMX_GPIO_NR(4, 8)); //FUS_SK_CPU - 104
+	gpio_direction_input(IMX_GPIO_NR(4, 10)); //PB_SX_CPU - 106
+				
+	gpio_direction_input(IMX_GPIO_NR(1, 2)); //TELLBACKBT1_CPU - 2
+	gpio_direction_input(IMX_GPIO_NR(1, 4)); //CTR_TELLBACKBT2_CPU - 4
+	gpio_direction_input(IMX_GPIO_NR(1, 7)); //CK_BT2_CPU - 7
+	gpio_direction_input(IMX_GPIO_NR(1, 8)); //TB2_CPU - 8
+	gpio_direction_input(IMX_GPIO_NR(7, 13)); //TELLBACKBT2_CPU - 205
+	gpio_direction_input(IMX_GPIO_NR(4, 5)); //T0_OMB_CPU - 101
+				
+	gpio_direction_input(IMX_GPIO_NR(6, 14)); //TERMINATE_CMD_1_CPU - 174
+	gpio_direction_input(IMX_GPIO_NR(6, 15)); //TERMINATE_CMD_2_CPU - 175
+	gpio_direction_input(IMX_GPIO_NR(6, 16)); //SENSOR_CPU - 176
+				
+	gpio_direction_input(IMX_GPIO_NR(6, 10)); //CK_PRES_BT2_CPU - 170
+	gpio_direction_input(IMX_GPIO_NR(2, 0)); //TIMER_SWITCH_CPU - 32
+	gpio_direction_input(IMX_GPIO_NR(2, 1)); //STATO_D1_CPU - 33
+	gpio_direction_input(IMX_GPIO_NR(2, 2)); //STATO_D2_CPU - 34
+	gpio_direction_input(IMX_GPIO_NR(2, 3)); //PB_DX_CPU - 35
+				
+	gpio_direction_input(IMX_GPIO_NR(1, 11)); //GO_HW_CPU - 11
+	gpio_direction_input(IMX_GPIO_NR(1, 10)); //GO_NOGO_MSL_CPU - 10
+	gpio_direction_input(IMX_GPIO_NR(1, 15)); //GO_NOGO_UA_CPU - 15
 
 	return 0;
 }
