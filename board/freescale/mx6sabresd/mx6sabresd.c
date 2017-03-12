@@ -625,7 +625,6 @@ int board_init(void)
 	gpio_direction_output(IMX_GPIO_NR(2, 31), 0); //INH_G_SWITCH_CPU - 63
 	gpio_direction_output(IMX_GPIO_NR(5, 0), 0); //BIT_L_CPU - 128
 	gpio_direction_output(IMX_GPIO_NR(2, 28), 0); //EBT_SK_CPU - 60
-				
 	gpio_direction_output(IMX_GPIO_NR(4, 16), 0); //SKR_PWR_CTR_CPU - 112
 	gpio_direction_output(IMX_GPIO_NR(4, 29), 0); //CMD_CONSENSOFUOCO_CPU - 125
 	gpio_direction_output(IMX_GPIO_NR(4, 30), 0); //CMD_FMP_INT_CPU - 126
@@ -633,22 +632,50 @@ int board_init(void)
 	gpio_direction_output(IMX_GPIO_NR(5, 6), 0); //SENS_D01_CPU - 134
 	gpio_direction_output(IMX_GPIO_NR(5, 10), 0); //ID_00_CPU - 138
 	gpio_direction_output(IMX_GPIO_NR(5, 11), 0); //ID_01_CPU - 139
-				
 	gpio_direction_output(IMX_GPIO_NR(4, 11), 0); //TFUEL_RANGE_SLC - 107
 	gpio_direction_output(IMX_GPIO_NR(1, 0), 0); //MAINT_SK_CPU - 0
 	gpio_direction_output(IMX_GPIO_NR(1, 9), 0); //SEL_ANT_CPU - 9
 	gpio_direction_output(IMX_GPIO_NR(7, 11), 0); //RESET_L_CPU - 203
 	gpio_direction_output(IMX_GPIO_NR(7, 12), 0); //CMD_SPIRA_CPU - 204
-				
 	gpio_direction_output(IMX_GPIO_NR(6, 9), 0); //IMX6_SPARE_LED - 169
 	gpio_direction_output(IMX_GPIO_NR(2, 4), 0); //SAFE_SPOLETTA_CPU - 36
 	gpio_direction_output(IMX_GPIO_NR(2, 5), 0); //ENABLE_DL_CPU - 37
 	gpio_direction_output(IMX_GPIO_NR(2, 6), 0); //ESA_CPU - 38
 	gpio_direction_output(IMX_GPIO_NR(2, 7), 0); //ESF_CPU - 39
-				
 	gpio_direction_output(IMX_GPIO_NR(1, 14), 0); //OK_CPU - 14
 	gpio_direction_output(IMX_GPIO_NR(1, 13), 0); //GO_SW_CPU - 13
 
+	gpio_direction_output(IMX_GPIO_NR(6, 5), 0); //IT_SL_1 - 165
+	gpio_direction_output(IMX_GPIO_NR(5, 15), 0); //IT_SL_2 - 143
+	gpio_direction_output(IMX_GPIO_NR(5, 16), 0); //IT_SL_3 - 144
+	gpio_direction_output(IMX_GPIO_NR(5, 17), 0); //IT_SL_4 - 145
+	gpio_direction_output(IMX_GPIO_NR(1, 24), 0); //IT_SL_5 - 24
+	gpio_direction_output(IMX_GPIO_NR(1, 28), 0); //IT_SL_6 - 28
+	gpio_direction_output(IMX_GPIO_NR(1, 27), 0); //IT_SL_7 - 27
+	gpio_direction_output(IMX_GPIO_NR(1, 30), 0); //IT_SL_8 - 30
+	gpio_direction_output(IMX_GPIO_NR(1, 29), 0); //IT_SL_10 - 29
+	gpio_direction_output(IMX_GPIO_NR(1, 5), 0); //ARM_EVENTI - 5
+	gpio_direction_output(IMX_GPIO_NR(5, 18), 0); //ARM_EVENTO - 146
+	gpio_direction_output(IMX_GPIO_NR(5, 19), 0); //ARM_TRACE_CTL - 147
+	gpio_direction_output(IMX_GPIO_NR(5, 20), 0); //ARM_TRACE_CLK - 148
+	gpio_direction_output(IMX_GPIO_NR(5, 21), 0); //ARM_TRACE_00 - 149
+	gpio_direction_output(IMX_GPIO_NR(5, 22), 0); //ARM_TRACE_01 - 150
+	gpio_direction_output(IMX_GPIO_NR(5, 23), 0); //ARM_TRACE_02 - 151
+	gpio_direction_output(IMX_GPIO_NR(5, 24), 0); //ARM_TRACE_03 - 152
+	gpio_direction_output(IMX_GPIO_NR(5, 25), 0); //ARM_TRACE_04 - 153
+	gpio_direction_output(IMX_GPIO_NR(5, 26), 0); //ARM_TRACE_05 - 154
+	gpio_direction_output(IMX_GPIO_NR(5, 27), 0); //ARM_TRACE_06 - 155
+	gpio_direction_output(IMX_GPIO_NR(5, 28), 0); //ARM_TRACE_07 - 156
+	gpio_direction_output(IMX_GPIO_NR(5, 29), 0); //ARM_TRACE_08 - 157
+	gpio_direction_output(IMX_GPIO_NR(5, 30), 0); //ARM_TRACE_09 - 158
+	gpio_direction_output(IMX_GPIO_NR(5, 31), 0); //ARM_TRACE_10 - 159
+	gpio_direction_output(IMX_GPIO_NR(6, 0), 0); //ARM_TRACE_11 - 160
+	gpio_direction_output(IMX_GPIO_NR(6, 1), 0); //ARM_TRACE_12 - 161
+	gpio_direction_output(IMX_GPIO_NR(6, 2), 0); //ARM_TRACE_13 - 162
+	gpio_direction_output(IMX_GPIO_NR(6, 3), 0); //ARM_TRACE_14 - 163
+	gpio_direction_output(IMX_GPIO_NR(6, 4), 0); //ARM_TRACE_15 - 164
+	gpio_direction_output(IMX_GPIO_NR(4, 13), 0); //SPARE1_ARTIX7 - 109
+	gpio_direction_output(IMX_GPIO_NR(6, 11), 0); //SPARE2_ARTIX7 - 171
 
 
 //GPIO INPUT
